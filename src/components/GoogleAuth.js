@@ -12,7 +12,7 @@ class GoogleAuth extends React.Component {
                 clientId: '846507596308-qnfkjbve5ob8sidq5q4qh665j1so15un.apps.googleusercontent.com',
                 scope: 'email'
             }).then(() => {
-                this.auth = window.gapi.auth2.getAuthInstance();
+                this.auth = window.gapi.auth2.getAuthInstance();          
                 this.onAuthChange(this.auth.isSignedIn.get());
                 this.auth.isSignedIn.listen(this.onAuthChange);
             });
@@ -40,7 +40,7 @@ class GoogleAuth extends React.Component {
 
     renderAuthButton() {
         if (this.props.isSignedIn === null) {
-            return <button onClick={this.onAuthChange()} className="ui red google button"><i className="google button">Sign in with google</i></button>
+            return null;
         } else if (this.props.isSignedIn) {
             return <button onClick={this.onSignOutClick} className="ui red google button"><i className="google button">Sign Out</i></button>
         }
